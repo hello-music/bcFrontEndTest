@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <script src="angular-1.4.8.min.js"></script>
+    <script src="components.js"></script>
+    <script src="services.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<bc-panel>
+    <bc-content>
+        <p class="header big-header">Welcome back!</p>
+
+        <p>
+            It has been a while.
+            <br>
+            Read any new books lately?
+        </p>
+    </bc-content>
+    <bc-footer bc-type="yesNo"></bc-footer>
+</bc-panel>
+<br>
+<br>
+<br>
+<bc-panel bc-type="left-image">
+    <bc-left-image image-src="./img/dog.png"></bc-left-image>
+    <bc-right-container>
+        <bc-content>
+            <bc-title-notes ng-controller="testCtrl"></bc-title-notes>
+        </bc-content>
+        <bc-footer bc-type="sample"></bc-footer>
+    </bc-right-container>
+</bc-panel>
+</body>
+</html>
