@@ -37,7 +37,18 @@
 </bc-panel>
 <div>
     <bc-dialog>
-        dialog content
+        <bc-dialog-content>
+            <bc-big-header>About the book</bc-big-header>
+            <bc-content>
+                <label>Book title</label>
+                <input type="text">
+                <br>
+                <label>Author name</label>
+                <input type="text">
+                <bc-rating></bc-rating>
+            </bc-content>
+            <bc-footer bc-type="yesNo"></bc-footer>
+        </bc-dialog-content>
     </bc-dialog>
 </div>
 </body>

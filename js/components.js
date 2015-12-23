@@ -90,7 +90,7 @@ angular.module('components', ['app.services'])
             restrict: 'E',
             transclude: true,
             template: '<div class="bc-dialog" ng-show="show">' +
-            '<a href class="close" ng-click="close()">&times;</a>' +
+            '<div class="close pointer" ng-click="close()">&times;</div>' +
             '<div ng-transclude></div>' +
             '</div>',
             link: function($scope, element, attrs) {
@@ -98,6 +98,43 @@ angular.module('components', ['app.services'])
                 $scope.close = function(){
                     $scope.show = false;
                 }
+            }
+        };
+    })
+
+    .directive('bcDialogContent', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            template: '<div class="bc-dialog-content" ng-transclude></div>'
+        };
+    })
+
+    .directive('bcRating', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            template: '<fieldset class="bc-rating">' +
+            '<input type="radio" id="star5" name="rating" value="5" ng-model="starValue"/><label for="star5"></label>' +
+            '<input type="radio" id="star4" name="rating" value="4" ng-model="starValue"/><label for="star4"></label>' +
+            '<input type="radio" id="star3" name="rating" value="3" ng-model="starValue"/><label for="star3"></label>' +
+            '<input type="radio" id="star2" name="rating" value="2" ng-model="starValue"/><label for="star2"></label>' +
+            '<input type="radio" id="star1" name="rating" value="1" ng-model="starValue" /><label for="star1"></label>' +
+            '</fieldset>',
+            link: function($scope, element, attrs) {
+                $scope.starValue = null;
+                $scope.$watch(
+                    function () {
+                        return $scope.starValue;
+                    },
+                    function (newValue, oldValue) {
+                        console.log('new watch called');
+                        if (newValue !== oldValue) {
+
+                            console.log('new value?', $scope.starValue);
+                        }
+                    }
+                );
             }
         };
     })
