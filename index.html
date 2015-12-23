@@ -1,25 +1,28 @@
 <!doctype html>
 <html ng-app="app">
 <head>
-    <script src="angular-1.4.8.min.js"></script>
-    <script src="components.js"></script>
-    <script src="services.js"></script>
-    <script src="app.js"></script>
+    <!--<script src="./js/lib/angular-1.4.8.min.js"></script>-->
+    <script src="./js/lib/angular-1.4.8.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/services.js"></script>
+    <script src="./js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<bc-panel>
-    <bc-content>
-        <p class="header big-header">Welcome back!</p>
+<div ng-controller="welcomeCtrl">
+    <bc-panel ng-show="showWelcome">
+        <bc-content>
+            <bc-big-header>Welcome back!</bc-big-header>
 
-        <p>
-            It has been a while.
-            <br>
-            Read any new books lately?
-        </p>
-    </bc-content>
-    <bc-footer bc-type="yesNo"></bc-footer>
-</bc-panel>
+            <p>
+                It has been a while.
+                <br>
+                Read any new books lately?
+            </p>
+        </bc-content>
+        <bc-footer bc-type="yesNo" on-left-click="hideWelcome()" on-right-click="showForm()"></bc-footer>
+    </bc-panel>
+</div>
 <br>
 <br>
 <br>
@@ -32,5 +35,10 @@
         <bc-footer bc-type="sample"></bc-footer>
     </bc-right-container>
 </bc-panel>
+<div>
+    <bc-dialog>
+        dialog content
+    </bc-dialog>
+</div>
 </body>
 </html>

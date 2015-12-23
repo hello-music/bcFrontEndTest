@@ -23,5 +23,14 @@ angular.module('app', ['components'])
         $scope.bcNotes = 'Alex Nelson';
     })
 
+    .controller('welcomeCtrl', function($scope) {
+        $scope.showWelcome = true;
+        $scope.hideWelcome = function(){
+            $scope.showWelcome = false;
+        }
+        $scope.showForm = function(){
+            console.log('show form');
+        }
+    })
 
 ;

@@ -1,5 +1,18 @@
 angular.module('components', ['app.services'])
 
+    //custom class needs to be added in a file loaded after style.css
+    .directive('bcBigHeader', function () {
+
+        return {
+            restrict: 'E',
+            scope: {
+                customClass: '@'
+            },
+            transclude: true,
+            template: '<div class="header big-header bright {{customClass}}" ng-transclude></div>'
+        };
+    })
+
     .directive('bcPanel', function () {
 
         return {
@@ -12,12 +25,14 @@ angular.module('components', ['app.services'])
         };
     })
 
-    .directive('bcFooter',['FooterLabels', function (FooterLabels) {
+    .directive('bcFooter', ['FooterLabels', function (FooterLabels) {
 
         return {
             restrict: 'E',
             scope: {
-                bcType: '@'
+                bcType: '@',
+                leftClick: '&onLeftClick',
+                rightClick: '&onRightClick'
             },
             controller: function ($scope, $element) {
                 var type = $scope.bcType;
@@ -26,8 +41,8 @@ angular.module('components', ['app.services'])
                 $scope.right = FooterLabels[type].right;
             },
             template: '<div class="bc-footer">' +
-                '<p class="left">{{left}}</p>' +
-                '<p class="right">{{right}}</p>' +
+            '<p class="left normal pointer" ng-click="leftClick()">{{left}}</p>' +
+            '<p class="right primitive pointer" ng-click="rightClick()">{{right}}</p>' +
             '</div>'
         };
     }])
@@ -67,6 +82,23 @@ angular.module('components', ['app.services'])
             '<p>{{bcTitle}}</p>' +
             '<p>{{bcNotes}}</p>' +
             '</div>'
+        };
+    })
+
+    .directive('bcDialog', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            template: '<div class="bc-dialog" ng-show="show">' +
+            '<a href class="close" ng-click="close()">&times;</a>' +
+            '<div ng-transclude></div>' +
+            '</div>',
+            link: function($scope, element, attrs) {
+                $scope.show = true;
+                $scope.close = function(){
+                    $scope.show = false;
+                }
+            }
         };
     })
 
