@@ -1,0 +1,14 @@
+{
+  "yesNo": {
+    "left": "NO",
+    "right": "YES"
+  },
+  "sample": {
+    "left": "FREE SAMPLE",
+    "right": "REVIEW"
+  },
+  "share": {
+    "left": "SHARE",
+    "right": "EXPLORE"
+  }
+}

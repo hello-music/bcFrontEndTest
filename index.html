@@ -8,7 +8,15 @@
     <script src="./js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class="background-steady">
+<div class="bc-title-bar">
+    <div class="bc-title-bar-title clean background-bright">
+        My Books
+    </div>
+    <div class="bc-title-bar-content background-clean" ng-controller="booksCtrl">
+        <div ng-repeat="book in books">{{book.title}}</div>
+    </div>
+</div>
 <div ng-controller="welcomeCtrl">
     <bc-panel ng-show="showWelcome">
         <bc-content>
@@ -22,21 +30,7 @@
         </bc-content>
         <bc-footer bc-type="yesNo" on-left-click="hideWelcome()" on-right-click="showForm()"></bc-footer>
     </bc-panel>
-</div>
-<br>
-<br>
-<br>
-<bc-panel bc-type="left-image">
-    <bc-left-image image-src="./img/dog.png"></bc-left-image>
-    <bc-right-container>
-        <bc-content>
-            <bc-title-notes ng-controller="testCtrl"></bc-title-notes>
-        </bc-content>
-        <bc-footer bc-type="sample"></bc-footer>
-    </bc-right-container>
-</bc-panel>
-<div>
-    <bc-dialog>
+    <bc-dialog show="showDialog">
         <bc-dialog-content>
             <bc-big-header>About the book</bc-big-header>
             <bc-content>
@@ -45,11 +39,26 @@
                 <br>
                 <label>Author name</label>
                 <input type="text">
+                <br>
                 <bc-rating></bc-rating>
             </bc-content>
             <bc-footer bc-type="yesNo"></bc-footer>
         </bc-dialog-content>
     </bc-dialog>
+</div>
+<br>
+<br>
+<br>
+<div ng-controller="booksCtrl">
+    <bc-panel bc-type="left-image" ng-repeat="book in books">
+        <bc-left-image image-src="{{book.img}}"></bc-left-image>
+        <bc-right-container>
+            <bc-content>
+                <bc-title-notes book="book"></bc-title-notes>
+            </bc-content>
+            <bc-footer bc-type="{{book.type}}"></bc-footer>
+        </bc-right-container>
+    </bc-panel>
 </div>
 </body>
 </html>

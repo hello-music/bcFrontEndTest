@@ -6,6 +6,29 @@
 body{
     color: #222222;
 }
+
+/*bc-title-bar*/
+.bc-title-bar{
+
+}
+
+.bc-title-bar-title{
+    padding-left: 20px;
+    min-height: 50px;
+}
+
+.bc-title-bar-content{
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    -webkit-align-items: center;
+    min-height: 50px;
+    padding-left: 10px;
+}
+
+.bc-title-bar-content > div{
+    margin: 10px;
+}
 /*bc-panel*/
 .bc-panel {
     border: 1px solid;
@@ -104,8 +127,25 @@ p {
 }
 
 .bright{
-    color: deeppink;
+    color: #E21860;
 }
+
+.background-bright{
+    background-color: #E21860;
+}
+
+.clean{
+    color: white;
+}
+
+.background-clean{
+    background-color: white;
+}
+
+.background-steady{
+    background-color: #DADADA;
+}
+
 
 /*shared cursor actions*/
 .pointer{

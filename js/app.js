@@ -1,6 +1,6 @@
 angular.module('app', ['components'])
 
-    .controller('BeerCounter', function($scope, $locale) {
+    .controller('BeerCounter', function ($scope, $locale) {
         $scope.beers = [0, 1, 2, 3, 4, 5, 6];
         if ($locale.id == 'en-us') {
             $scope.beerForms = {
@@ -18,10 +18,20 @@ angular.module('app', ['components'])
         }
     })
 
-    .controller('testCtrl', function($scope) {
+
+    .controller('testCtrl', function ($scope, Books) {
         $scope.bcTitle = 'El Pooch';
         $scope.bcNotes = 'Alex Nelson';
         $scope.starValue = null;
+
+        $scope.books = [];
+
+        Books.getData().then(function (response) {
+
+            console.log('books: ', response.data);
+
+            $scope.books = response.data;
+        });
 
         $scope.$watch(
             // This function returns the value being watched. It is called for each turn of the $digest loop
@@ -41,13 +51,27 @@ angular.module('app', ['components'])
         );
     })
 
-    .controller('welcomeCtrl', function($scope) {
+    .controller('booksCtrl', function ($scope, Books) {
+        $scope.bcTitle = 'El Pooch';
+        $scope.bcNotes = 'Alex Nelson';
+
+        Books.getData().then(function (response) {
+
+            console.log('books: ', response.data);
+
+            $scope.books = response.data;
+        });
+    })
+
+    .controller('welcomeCtrl', function ($scope) {
         $scope.showWelcome = true;
-        $scope.hideWelcome = function(){
+        $scope.showDialog = false;
+
+        $scope.hideWelcome = function () {
             $scope.showWelcome = false;
         }
-        $scope.showForm = function(){
-            console.log('show form');
+        $scope.showForm = function () {
+            $scope.showDialog = true;
         }
     })
 

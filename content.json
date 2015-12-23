@@ -1,0 +1,37 @@
+{
+  "title": "Buying an iPad Mini?",
+  "books": [
+    {
+      "title": "What Types of iPad Minis Are Available?",
+      "thumbnail": "./img/dog.png",
+      "author": "a",
+      "sample": true
+    },
+    {
+      "title": "How Much Storage Do I Need?",
+      "thumbnail": "",
+      "author": "b",
+      "sample": true
+    },
+    {
+      "title": "Should I Choose Wi-Fi or Wi-Fi + Cellular?",
+      "thumbnail": "",
+      "author": "c",
+      "sample": false
+    }
+  ],
+  "FooterLabels": {
+    "yesNo": {
+      "left": "NO",
+      "right": "YES"
+    },
+    "sample": {
+      "left": "FREE SAMPLE",
+      "right": "REVIEW"
+    },
+    "share": {
+      "left": "SHARE",
+      "right": "EXPLORE"
+    }
+  }
+}

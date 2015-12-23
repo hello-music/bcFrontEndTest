@@ -21,10 +21,9 @@ angular.module('components', ['app.services'])
                 bcType: '@'
             },
             transclude: true,
-            template: '<div class="bc-panel {{bcType}}" ng-transclude></div>'
+            template: '<div class="bc-panel {{bcType}} background-clean" ng-transclude></div>'
         };
     })
-
     .directive('bcFooter', ['FooterLabels', function (FooterLabels) {
 
         return {
@@ -37,8 +36,13 @@ angular.module('components', ['app.services'])
             controller: function ($scope, $element) {
                 var type = $scope.bcType;
 
-                $scope.left = FooterLabels[type].left;
-                $scope.right = FooterLabels[type].right;
+                FooterLabels.getData().then(function(response){
+
+                    var labels = response.data;
+
+                    $scope.left = labels[type].left;
+                    $scope.right = labels[type].right;
+                });
             },
             template: '<div class="bc-footer">' +
             '<p class="left normal pointer" ng-click="leftClick()">{{left}}</p>' +
@@ -78,9 +82,12 @@ angular.module('components', ['app.services'])
     .directive('bcTitleNotes', function () {
         return {
             restrict: 'E',
+            scope:{
+                book:'='
+            },
             template: '<div class="bc-title-notes">' +
-            '<p>{{bcTitle}}</p>' +
-            '<p>{{bcNotes}}</p>' +
+            '<p>{{book.title}}</p>' +
+            '<p>{{book.author}}</p>' +
             '</div>'
         };
     })
@@ -89,12 +96,14 @@ angular.module('components', ['app.services'])
         return {
             restrict: 'E',
             transclude: true,
+            scope:{
+                show:'='
+            },
             template: '<div class="bc-dialog" ng-show="show">' +
             '<div class="close pointer" ng-click="close()">&times;</div>' +
             '<div ng-transclude></div>' +
             '</div>',
             link: function($scope, element, attrs) {
-                $scope.show = true;
                 $scope.close = function(){
                     $scope.show = false;
                 }

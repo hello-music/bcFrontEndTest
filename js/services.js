@@ -1,21 +1,21 @@
 angular.module('app.services', [])
 
-    .factory('FooterLabels', function () {
-        // Might use a resource here that returns a JSON array
+    .factory('Books', function ($http) {
+        var Books = {};
+        //Gets the list of nuclear weapons
+        Books.getData = function () {
+            return $http.get('./books.json');
+        };
 
-        // Some fake testing data
-        return {
-            yesNo: {
-                left: 'NO',
-                right: 'YES'
-            },
-            sample: {
-                left: 'FREE SAMPLE',
-                right: 'REVIEW'
-            },
-            share: {
-                left: 'SHARE',
-                right: 'EXPLORE'
-            }
-        }
+        return Books;
+    })
+
+    .factory('FooterLabels', function ($http) {
+        var FooterLabels = {};
+        //Gets the list of nuclear weapons
+        FooterLabels.getData = function () {
+            return $http.get('./footerLabels.json');
+        };
+
+        return FooterLabels;
     });
